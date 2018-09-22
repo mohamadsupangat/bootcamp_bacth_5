@@ -139,3 +139,131 @@ $pecahan="20000,5000,2000,1000,500";   // daftar uang pecahan di machine
 echo hitung_kembalian($total,$uang,$pecahan);
 
 ?>
+```
+4.
+```php
+<?php
+
+// membuat function deret fibonacci
+function fibo($kolom,$baris)
+{
+	$tmp_baris=$tmp_kolom=0;
+	$pertama=0;
+	$kedua=1;
+	echo $pertama.",";
+	$tmp_kolom++;
+	echo $kedua.",";
+	$tmp_kolom++;
+	while (true) {
+		$ketiga=$pertama+$kedua;
+		$pertama=$kedua;
+		$kedua=$ketiga;
+		echo $kedua.",";
+		$tmp_kolom++;
+		if ($tmp_kolom/$kolom==1) {
+			echo "<br/>";
+			$tmp_kolom=0;
+			$tmp_baris++;
+		}
+
+		if ($tmp_baris/$baris==1) {
+			return false;
+		}
+	}	
+
+}
+
+// mengeksekusi function
+fibo(4,3);
+
+?>
+```
+5.
+```php
+<?php
+
+// membuat function 
+function tampilkan()
+{
+
+	$buka='<table style="width: auto;float: left;margin-right: 10px;">';$tutup='</table>';
+	$d1='<td>';$d2='</td>';
+	$r1='<tr>';$r2='</tr>';
+	return $buka.$r1."".$d1."DW".$d2."".$d1."DW".$d2."".$d1."".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."".$d2."".$d1."DW".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."DW".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."DW".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."".$d2."".$d1."DW".$d2."".$d1."".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."DW".$d2."".$d1."".$d2."".$r2.$tutup.$buka.$r1."".$d1."DW".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."DW".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."DW".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."DW".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."DW".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."".$d2."".$d1."DW".$d2."".$d1."DW".$d2."".$d1."DW".$d2."".$d1."".$d2."".$d1."DW".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."DW".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."DW".$d2."".$d1."DW".$d2."".$r2."".$r1."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$r2."".$r1."".$d1."DW".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."".$d2."".$d1."DW".$d2."".$r2.$tutup;
+
+}
+
+
+// mengeksekusi function
+
+echo tampilkan();
+
+?>
+```
+6. 
+```php
+<?php
+$db=mysqli_connect("localhost","root","pangat","jawaban");
+$query1=mysqli_query($db,"SELECT *, posts.id AS pid FROM posts JOIN users ON posts.createdBy = users.id ORDER BY posts.id DESC");
+while ($post=mysqli_fetch_object($query1)) {
+	echo "<ul>";
+	echo "<li>posts.title: ".$post->title."</li>";
+	echo "<li>posts.users.username: dibuat oleh ".$post->username."</li>";
+	echo "<li> Comments: <ul> ";
+		$query2=mysqli_query($db,"SELECT * FROM comments WHERE postId = ".$post->pid."  ORDER BY id DESC");
+		while ($c=mysqli_fetch_object($query2)) {
+			echo "<li>".$c->comment."</li>";
+		}
+		echo "</ul></li></ul>";
+}
+?>
+```
+7.
+```
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jawaban  No.7</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container mt-2">
+	<?php
+	$db=mysqli_connect("localhost","root","pangat","jawaban");
+	$query1=mysqli_query($db,"SELECT *, posts.id AS pid FROM posts JOIN users ON posts.createdBy = users.id ORDER BY posts.id DESC");
+	while ($post=mysqli_fetch_object($query1)) {
+	?>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-body">
+					<h3>posts.title: <?= $post->title; ?></h3>
+					<small >posts.users.username: dibuat oleh <?= $post->username; ?></small>
+					<hr>
+					<?= $post->content; ?>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<h5>Comments on <?= $post->title ;?> :</h5>
+					<hr>
+					<?php
+						$query2=mysqli_query($db,"SELECT * FROM comments WHERE postId = ".$post->pid."  ORDER BY id DESC");
+						while ($c=mysqli_fetch_object($query2)) {
+							echo "<div class='card'> <div class='card-body'>".$c->comment."</div></div>";
+						}
+					?>
+				</div>
+			</div>			
+		</div>
+	</div>
+	<?php
+	}
+	?>
+</div>
+</body>
+</html>
+```
