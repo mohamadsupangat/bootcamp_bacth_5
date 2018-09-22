@@ -1,7 +1,7 @@
 ## Mohamad Supangat
 #### Jl. Kasegeran Rt9/2, Desa. Kasegeran, Kec. Cilongok, Kab. Banyumas 
 
-1. <?php
+1. ```<?php
 // bmembuat function biodata
 function biodata($name="",$address="",$hobbies="",$is_married="",$school="",$skill="")
 {
@@ -30,3 +30,7 @@ $skill="html, css, javascript, jquery, php, mysql, codeigniter";
 
 // eksekusi fungsi biodata
 printf(biodata($nama,$alamat,$hobi,$menikah,$sekolah,$skill));
+
+?>
+```
+2. 
