@@ -3,7 +3,8 @@
 
 1.
 
-```<?php
+```php
+<?php
 // bmembuat function biodata
 function biodata($name="",$address="",$hobbies="",$is_married="",$school="",$skill="")
 {
